@@ -1,105 +1,30 @@
-# ============================================================================# ============================================================================
-
-# Yamaha Search API - Monitoring Terraform Variables Example# Yamaha Search API - Terraform Variables Example
-
-# ============================================================================# ============================================================================
-
-# Copy this file to terraform.tfvars and update with your values# Copy this file to terraform.tfvars and update with your values
-
-# ============================================================================# ============================================================================
-
-
-
-# ============================================================================# ============================================================================
-
-# REQUIRED: Update these with your existing Azure resource names# REQUIRED: Update these with your existing Azure resource names
-
-# ============================================================================# ============================================================================
-
-
-
-resource_group_name       = "yamaha-search-rg"resource_group_name  = "yamaha-search-rg"
-
-application_insights_name = "yamaha-search-api-prod-insights"key_vault_name       = "yamaha-search-kv"
-
-search_service_name  = "yamaha-search-service"
-
-# ============================================================================openai_account_name  = "yamaha-openai"
-
-# OPTIONAL: Customize these settingscosmos_account_name  = "yamaha-cosmos-db"
-
+# ============================================================================
+# Yamaha Search API - Terraform Variables Example
+# ============================================================================
+# Copy this file to terraform.tfvars and update with your values
 # ============================================================================
 
 # ============================================================================
-
-location    = "eastus2"# REQUIRED: App Service name (must be globally unique)
-
-environment = "prod"# ============================================================================
-
-
-
-# ============================================================================web_app_name = "yamaha-search-api-prod"
-
-# Monitoring & Alerts (Optional)
-
-# ============================================================================# ============================================================================
-
-# OPTIONAL: Customize these settings
-
-enable_alerts = false  # Set to true to enable alerts# ============================================================================
-
-alert_email   = ""     # Email for alert notifications (required if enable_alerts = true)
-
-location                = "eastus2"
-
-# ============================================================================environment             = "prod"
-
-# Tagsapp_service_plan_name   = "yamaha-search-plan"
-
-# ============================================================================app_service_sku         = "B1"  # Options: B1, B2, B3, S1, S2, S3, P1v2, P2v2, P3v2
-
-log_level               = "INFO"
-
-tags = {workers_count           = 4
-
-  Project     = "Yamaha Search API"
-
-  ManagedBy   = "Terraform"# ============================================================================
-
-  Environment = "Production"# Azure Services Configuration
-
-  Component   = "Monitoring"# ============================================================================
-
-}
-
-search_index_suffix         = "prod"
-openai_api_version          = "2024-02-01"
-openai_embedding_deployment = "text-embedding-ada-002"
-openai_chat_deployment      = "gpt-4"
-cosmos_database_name        = "yamaha-search"
-cosmos_collection_name      = "chat-history"
-
-# ============================================================================
-# Security Settings
+# REQUIRED VARIABLES - Must be provided
 # ============================================================================
 
-cors_allowed_origins = ["*"]  # Update with specific origins in production
-enable_application_insights = true
+resource_group_name      = "yamaha-search-rg"
+application_insights_id  = "/subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/yamaha-search-rg/providers/Microsoft.Insights/components/yamaha-populate-index-poc"
 
 # ============================================================================
-# Monitoring & Alerts (Optional)
+# OPTIONAL VARIABLES - Uncomment and customize if needed
+# All variables below have defaults and can be omitted
 # ============================================================================
 
-enable_alerts = false  # Set to true to enable alerts
-alert_email   = ""     # Email for alert notifications (required if enable_alerts = true)
+# location    = "eastus2"
+# environment = "prod"
 
-# ============================================================================
-# Tags
-# ============================================================================
+# enable_alerts = false
+# alert_email   = ""
 
-tags = {
-  Project     = "Yamaha Search API"
-  ManagedBy   = "Terraform"
-  Environment = "Production"
-  Owner       = "Your Team Name"
-}
+# tags = {
+#   Project     = "Yamaha Search API"
+#   ManagedBy   = "Terraform"
+#   Environment = "Production"
+#   Owner       = "Your Team Name"
+# }
